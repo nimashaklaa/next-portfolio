@@ -26,7 +26,7 @@ export default function HeroActions() {
           borderColor:  accentColor ==="rgb(0,0,0)" ? "white" : accentColor,
           color: accentColor ==="rgb(0,0,0)" ? "white" : accentColor,
         }}
-        href="mailto:amandinimasha@gmail.com"
+        href="mailto:amandinimasha99@gmail.com"
       >
         Contact
       </a>
