@@ -1,0 +1,36 @@
+export const drawerTokens = {
+  dark: {
+    bg: "#0F0F13",
+    border: "#1C1C1C",
+    borderSubtle: "#2A2A2A",
+    textPrimary: "#ffffff",
+    textSecondary: "#999999",
+    textMuted: "#555555",
+    swatchSelected: "#ffffff",
+    swatchSelectedGlow: "#4A3D99",
+    themeButtonActiveBg: "#1E1E2A",
+    themeButtonActiveBorder: "#4A3D99",
+    themeButtonActiveText: "#a89ff5",
+    themeButtonBg: "#141418",
+    themeButtonBorder: "#222222",
+    themeButtonText: "#666666",
+  },
+  light: {
+    bg: "#ffffff",
+    border: "#e5e7eb",
+    borderSubtle: "#f3f4f6",
+    textPrimary: "#111827",
+    textSecondary: "#6b7280",
+    textMuted: "#9ca3af",
+    swatchSelected: "#111827",
+    swatchSelectedGlow: "#6366f1",
+    themeButtonActiveBg: "#eef2ff",
+    themeButtonActiveBorder: "#6366f1",
+    themeButtonActiveText: "#4338ca",
+    themeButtonBg: "#f9fafb",
+    themeButtonBorder: "#e5e7eb",
+    themeButtonText: "#9ca3af",
+  },
+} as const;
+
+export type DrawerTheme = keyof typeof drawerTokens;
