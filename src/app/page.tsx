@@ -7,8 +7,8 @@ import ColourPallet from "@/app/components/ColorPallet";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center gap-16 py-16 px-6 bg-white dark:bg-black sm:items-start sm:justify-between sm:py-32 sm:px-16 sm:gap-0">
+    <div className="flex flex-1 flex-col items-center justify-center bg-white font-sans dark:bg-black">
+      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between px-6 py-16 sm:px-16 sm:py-32">
         <HeroHeader />
         <HeroBio />
         <HeroActions />
