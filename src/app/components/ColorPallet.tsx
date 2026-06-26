@@ -4,42 +4,25 @@ import { useEffect } from "react";
 import { COLORS } from "@/app/constants/colors";
 import { drawerTokens } from "@/app/constants/theme-tokens";
 import useCommonStore from "@/app/store/use-common-store";
-
-const THEMES = [
-  { id: "light" as const, label: "Light", icon: "☀️" },
-  { id: "dark" as const, label: "Dark", icon: "🌙" },
-  { id: "system" as const, label: "System", icon: "💻" },
-];
+import ThemeToggle from "@/app/components/ThemeToggle";
 
 export default function ColourPallet() {
   const drawerOpen = useCommonStore((state) => state.isDrawerOpen);
   const accentColor = useCommonStore((state) => state.accentColor);
-  const theme = useCommonStore((state) => state.theme);
   const isDark = useCommonStore((state) => state.isDark);
   const setDrawerOpen = useCommonStore((state) => state.setDrawerOpen);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
-  const setTheme = useCommonStore((state) => state.setTheme);
   const setIsDark = useCommonStore((state) => state.setIsDark);
+  const setTheme = useCommonStore((state) => state.setTheme);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;
 
-  // Apply theme class to <html> and sync isDark
+  // Initialize from system preference on first load
   useEffect(() => {
-    const root = document.documentElement;
-    const mq = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const apply = () => {
-      const dark = theme === "dark" || (theme === "system" && mq.matches);
-      setIsDark(dark);
-      root.classList.toggle("dark", dark);
-    };
-
-    apply();
-
-    if (theme === "system") {
-      mq.addEventListener("change", apply);
-      return () => mq.removeEventListener("change", apply);
-    }
-  }, [theme]);
+    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setIsDark(dark);
+    setTheme(dark ? "dark" : "light");
+    document.documentElement.classList.toggle("dark", dark);
+  }, []);
 
   return (
     <>
@@ -86,34 +69,7 @@ export default function ColourPallet() {
 
         <div className="flex flex-1 flex-col gap-6 overflow-y-auto px-5 py-5">
           {/* Theme Section */}
-          <div>
-            <p
-              className="mb-3 text-[10px] font-semibold tracking-widest uppercase"
-              style={{ color: t.textMuted }}
-            >
-              Theme
-            </p>
-            <div className="grid grid-cols-3 gap-2">
-              {THEMES.map((item) => {
-                const isActive = theme === item.id;
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => setTheme(item.id)}
-                    className="flex flex-col items-center justify-center gap-1 rounded py-2.5 text-[10px] font-medium tracking-wide transition-all focus:outline-none"
-                    style={{
-                      background: isActive ? t.themeButtonActiveBg : t.themeButtonBg,
-                      border: `1px solid ${isActive ? t.themeButtonActiveBorder : t.themeButtonBorder}`,
-                      color: isActive ? t.themeButtonActiveText : t.themeButtonText,
-                    }}
-                  >
-                    <span style={{ fontSize: "14px" }}>{item.icon}</span>
-                    {item.label}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          <ThemeToggle textMuted={t.textMuted} />
 
           {/* Accent Colour Section */}
           <div>

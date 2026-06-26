@@ -6,7 +6,7 @@ export default function BackgroundCharm() {
   const accentColor = useCommonStore((state) => state.accentColor);
   const isDark = useCommonStore((state) => state.isDark);
 
-  const orbOpacity = 0.6;
+  const orbOpacity = 0.4;
   const gridColor = isDark ? "#ffffff" : "#000000";
   const gridOpacity = isDark ? 0.12 : 0.15;
 
@@ -14,18 +14,18 @@ export default function BackgroundCharm() {
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {/* Top-left orb */}
       <div
-        className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full blur-[120px] transition-colors duration-700"
-        style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.8 }}
+        className="absolute -top-40 -left-40 h-100 w-125 rounded-full blur-[120px] transition-colors duration-700"
+        style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.6 }}
       />
       {/* Bottom-right orb */}
       <div
-        className="absolute -right-40 -bottom-40 h-[400px] w-[400px] rounded-full blur-[100px] transition-colors duration-700"
+        className="absolute -right-40 -bottom-40 h-100 w-100 rounded-full blur-[100px] transition-colors duration-700"
         style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.8 }}
       />
       {/* Center subtle glow */}
       <div
-        className="absolute top-1/2 left-1/2 h-[300px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px] transition-colors duration-700"
-        style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.8 }}
+        className="absolute top-1/2 left-1/2 h-75 w-100 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px] transition-colors duration-700"
+        style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.6 }}
       />
       {/* Dot grid */}
       <div
