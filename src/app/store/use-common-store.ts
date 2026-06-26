@@ -9,7 +9,7 @@ type CommonStoreState = {
 
 const useCommonStore = create<CommonStoreState>()((set) => ({
     isDrawerOpen: false,
-    accentColor: "#18181b",
+    accentColor: "rgb(255,255,255)",
     setDrawerOpen: (isDrawerOpen) => set({ isDrawerOpen }),
     setAccentColor: (accentColor) => set({ accentColor }),
 }))
