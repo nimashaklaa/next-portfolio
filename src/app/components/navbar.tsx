@@ -1,3 +1,63 @@
+"use client";
+
+import useCommonStore from "@/app/store/use-common-store";
+
+const NAV_ITEMS = [
+  { label: "About Me", href: "#about" },
+  { label: "Academics", href: "#academics" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Publications", href: "#publications" },
+  { label: "Blogs", href: "#blogs" },
+  { label: "Projects", href: "#projects" },
+];
+
 export default function Navbar() {
-  return <div>Navbar</div>;
+  const accentColor = useCommonStore((state) => state.accentColor);
+  const isDark = useCommonStore((state) => state.isDark);
+
+  const borderColor = isDark ? "#1c1c1c" : "#e5e7eb";
+  const bg = isDark ? "#0a0a0a" : "#ffffff";
+
+  return (
+    <nav
+      className="fixed top-0 right-0 left-0 z-30 flex h-14 w-full items-center justify-between px-6 sm:px-16"
+      style={{ backgroundColor: bg, borderBottom: `1px solid ${borderColor}` }}
+    >
+      {/* Logo */}
+      <a
+        href="#"
+        className="text-sm font-bold tracking-widest"
+        style={{ color: accentColor, fontFamily: "var(--font-geist-mono)" }}
+      >
+        AN
+      </a>
+
+      {/* Nav links */}
+      <div className="hidden items-center gap-6 md:flex">
+        {NAV_ITEMS.map((item) => (
+          <a
+            key={item.label}
+            href={item.href}
+            className="text-s font-medium tracking-wide transition-colors duration-200"
+            style={{ color: isDark ? "#555" : "#aaa" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = accentColor)}
+            onMouseLeave={(e) => (e.currentTarget.style.color = isDark ? "#555" : "#aaa")}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile hamburger */}
+      <button
+        className="flex flex-col gap-1.5 md:hidden"
+        aria-label="Menu"
+        style={{ color: isDark ? "#555" : "#aaa" }}
+      >
+        <span className="block h-px w-5 bg-current" />
+        <span className="block h-px w-5 bg-current" />
+        <span className="block h-px w-3.5 bg-current" />
+      </button>
+    </nav>
+  );
 }

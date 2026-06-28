@@ -6,13 +6,16 @@ export default function HeroActions() {
   const { accentColor, textOnAccent } = useAccentColor();
 
   return (
-    <div className="flex flex-col w-full gap-4 text-base font-medium sm:flex-row sm:w-auto">
+    <div className="flex w-full flex-col gap-4 text-base font-medium sm:w-auto sm:flex-row">
       <a
         className="flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors md:w-39.5"
         style={{
           backgroundColor: accentColor,
           color: textOnAccent,
-            boxShadow: accentColor === "rgb(0,0,0)" ? "0 0 10px rgba(255, 255, 255, 0.5)" : "0 0 10px rgba(0, 0, 0, 0.5)",
+          boxShadow:
+            accentColor === "rgb(0,0,0)"
+              ? "0 0 10px rgba(255, 255, 255, 0.5)"
+              : "0 0 10px rgba(0, 0, 0, 0.5)",
         }}
         href="/files/Amandi Nimasha CV.pdf"
         target="_blank"
@@ -21,10 +24,10 @@ export default function HeroActions() {
         Resume
       </a>
       <a
-        className="flex h-12 w-full items-center justify-center rounded-full border border-solid px-5 transition-colors hover:bg-black/[.04] dark:hover:bg-[#1a1a1a] md:w-[158px]"
+        className="flex h-12 w-full items-center justify-center rounded-full border border-solid px-5 transition-colors hover:bg-black/[.04] md:w-[158px] dark:hover:bg-[#1a1a1a]"
         style={{
-          borderColor:  accentColor ==="rgb(0,0,0)" ? "white" : accentColor,
-          color: accentColor ==="rgb(0,0,0)" ? "white" : accentColor,
+          borderColor: accentColor === "rgb(0,0,0)" ? "black" : accentColor,
+          color: accentColor === "rgb(0,0,0)" ? "black" : accentColor,
         }}
         href="mailto:amandinimasha99@gmail.com"
       >

@@ -8,6 +8,8 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
   const isDark = useCommonStore((state) => state.isDark);
   const setTheme = useCommonStore((state) => state.setTheme);
   const setIsDark = useCommonStore((state) => state.setIsDark);
+  const setAccentColor = useCommonStore((state) => state.setAccentColor);
+  const accentColor = useCommonStore((state) => state.accentColor);
 
   const thumbRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -16,6 +18,11 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
 
   const toggle = () => {
     const next = !isDark;
+    if (next) {
+      setAccentColor("rgb(255,255,255)");
+    } else {
+      setAccentColor("rgb(0,0,0)");
+    }
     setIsDark(next);
     setTheme(next ? "dark" : "light");
     document.documentElement.classList.toggle("dark", next);
@@ -57,6 +64,8 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
       ease: "power2.out",
     });
   }, [isDark]);
+
+  console.log("accent color", accentColor);
 
   return (
     <div>

@@ -10,7 +10,7 @@ import BackgroundCharm from "@/app/components/BackgroundCharm";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-1 flex-col items-center justify-center bg-white font-sans dark:bg-black">
+    <div className="relative flex flex-1 flex-col items-center justify-center bg-white pt-14 font-sans dark:bg-black">
       <BackgroundCharm />
       <Navbar />
       <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between px-6 py-16 sm:px-16 sm:py-32">
