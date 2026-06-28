@@ -14,11 +14,7 @@ export default function ColourPallet() {
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const setIsDark = useCommonStore((state) => state.setIsDark);
   const setTheme = useCommonStore((state) => state.setTheme);
-  const theme = useCommonStore((state) => state.theme);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;
-
-  console.log("accentColor", accentColor);
-  console.log("isDark", isDark);
 
   useEffect(() => {
     const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -85,8 +81,7 @@ export default function ColourPallet() {
             <div className="grid gap-2" style={{ gridTemplateColumns: "repeat(6, 1fr)" }}>
               {COLORS.map((color) => {
                 const shouldDisable =
-                  (color.name === "White" && theme === "light") ||
-                  (color.name === "Black" && theme === "dark");
+                  (color.name === "White" && !isDark) || (color.name === "Black" && isDark);
                 const isSelected = accentColor === color.value;
                 return (
                   <button

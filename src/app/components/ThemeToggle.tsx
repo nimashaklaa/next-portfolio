@@ -18,9 +18,9 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
 
   const toggle = () => {
     const next = !isDark;
-    if (next) {
+    if (next && accentColor === "rgb(0,0,0)") {
       setAccentColor("rgb(255,255,255)");
-    } else {
+    } else if (!next && accentColor === "rgb(255,255,255)") {
       setAccentColor("rgb(0,0,0)");
     }
     setIsDark(next);

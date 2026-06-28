@@ -26,7 +26,7 @@ export default function BackgroundCharm() {
       {/* Center subtle glow */}
       <div
         className="absolute top-1/2 left-1/2 h-40 w-200 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[140px] transition-colors duration-700"
-        style={{ backgroundColor: accentColor, opacity: orbOpacity * 0.6 }}
+        style={{ backgroundColor: accentColor, opacity: orbOpacity }}
       />
       {/* Dot grid */}
       <div
