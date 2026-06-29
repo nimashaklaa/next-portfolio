@@ -4,12 +4,12 @@ import { usePreferenceStore } from "../store/use-preference-store";
 import useUiStore from "@/app/store/use-ui-store";
 
 const NAV_ITEMS = [
-  { label: "About Me", href: "#about" },
-  { label: "Academics", href: "#academics" },
-  { label: "Certifications", href: "#certifications" },
-  { label: "Publications", href: "#publications" },
-  { label: "Blogs", href: "#blogs" },
-  { label: "Projects", href: "#projects" },
+  { label: "About Me", href: "/about" },
+  { label: "Academics", href: "/academics" },
+  { label: "Projects", href: "/projects" },
+  { label: "Certifications", href: "/certifications" },
+  { label: "Publications", href: "/publications" },
+  { label: "Blogs", href: "/blogs" },
 ];
 
 export default function Navbar() {
@@ -23,7 +23,7 @@ export default function Navbar() {
     >
       {/* Logo */}
       <a
-        href="#"
+        href="/"
         className="text-sm font-bold tracking-widest"
         style={{ color: accentColor, fontFamily: "var(--font-geist-mono)" }}
       >
