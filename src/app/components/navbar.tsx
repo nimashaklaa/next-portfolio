@@ -1,6 +1,7 @@
 "use client";
 
 import { usePreferenceStore } from "../store/use-preference-store";
+import useUiStore from "@/app/store/use-ui-store";
 
 const NAV_ITEMS = [
   { label: "About Me", href: "#about" },
@@ -13,6 +14,7 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const accentColor = usePreferenceStore((state) => state.accentColor);
+  const setDrawerOpen = useUiStore((state) => state.setDrawerOpen);
 
   return (
     <nav
@@ -39,6 +41,27 @@ export default function Navbar() {
             {item.label}
           </a>
         ))}
+        <div className="group relative">
+          <button
+            onClick={() => setDrawerOpen(true)}
+            className="flex h-8 w-8 items-center justify-center rounded-full text-zinc-400 transition-colors hover:text-zinc-700 dark:hover:text-zinc-200"
+            aria-label="Customize theme color"
+          >
+            <img
+              src="/settings.svg"
+              alt=""
+              width={16}
+              height={16}
+              className="opacity-40 invert-0 dark:invert"
+            />
+          </button>
+          <div className="pointer-events-none absolute top-10 left-1/2 z-10 w-48 -translate-x-1/2 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+            <div className="rounded-lg bg-zinc-900 px-3 py-2 text-center text-xs text-zinc-50 shadow-lg dark:bg-zinc-100 dark:text-zinc-900">
+              💡 Customize the webpage as yours
+            </div>
+            <div className="absolute -top-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 bg-zinc-900 dark:bg-zinc-100" />
+          </div>
+        </div>
       </div>
 
       {/* Mobile hamburger */}

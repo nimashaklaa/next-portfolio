@@ -1,16 +1,29 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { usePreferenceStore } from "../store/use-preference-store";
 
 export default function BackgroundCharm() {
   const accentColor = usePreferenceStore((state) => state.accentColor);
+  const glowRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      if (!glowRef.current) return;
+      glowRef.current.style.left = `${e.clientX}px`;
+      glowRef.current.style.top = `${e.clientY}px`;
+    };
+    window.addEventListener("mousemove", onMove);
+    return () => window.removeEventListener("mousemove", onMove);
+  }, []);
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
-      {/* Center subtle glow */}
+      {/* Cursor-following glow */}
       <div
-        className="absolute top-1/2 left-1/2 h-40 w-200 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-40 blur-[140px] transition-colors duration-700"
-        style={{ backgroundColor: accentColor }}
+        ref={glowRef}
+        className="absolute h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-30 blur-[120px] transition-colors duration-700"
+        style={{ backgroundColor: accentColor, left: "50%", top: "50%" }}
       />
       {/* Dot grid — color via CSS var so it responds to dark class before JS */}
       <div

@@ -9,7 +9,7 @@ type PreferenceStore = {
 export const usePreferenceStore = create<PreferenceStore>()(
   persist(
     (set) => ({
-      accentColor: "rgb(0,0,0)",
+      accentColor: "rgb(117,249,76)",
       setAccentColor: (accentColor) => set({ accentColor }),
     }),
     { name: "preference-storage", skipHydration: true }

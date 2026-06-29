@@ -26,7 +26,7 @@ export default function ColourPallet() {
         style={{ transform: drawerOpen ? "translateX(0)" : "translateX(100%)" }}
       >
         {/* Header */}
-        <div className="flex shrink-0 items-center justify-between border-b border-[#e5e7eb] px-5 py-4 dark:border-[#1C1C1C]">
+        <div className="flex h-14 shrink-0 items-center justify-between border-b border-[#e5e7eb] px-5 py-4 dark:border-[#1C1C1C]">
           <div>
             <h3 className="m-0 text-sm font-semibold tracking-widest text-[#111827] uppercase dark:text-white">
               Customize
