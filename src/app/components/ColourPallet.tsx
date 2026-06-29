@@ -1,14 +1,17 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import { COLORS } from "@/app/constants/colors";
 import { drawerTokens } from "@/app/constants/theme-tokens";
 import useCommonStore from "@/app/store/use-common-store";
 import ThemeToggle from "@/app/components/ThemeToggle";
 
 export default function ColourPallet() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   const drawerOpen = useCommonStore((state) => state.isDrawerOpen);
   const accentColor = useCommonStore((state) => state.accentColor);
-  const isDark = useCommonStore((state) => state.isDark);
   const setDrawerOpen = useCommonStore((state) => state.setDrawerOpen);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;

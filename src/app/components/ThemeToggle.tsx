@@ -6,10 +6,9 @@ import useCommonStore from "@/app/store/use-common-store";
 import { useTheme } from "next-themes";
 
 export default function ThemeToggle({ textMuted }: { textMuted: string }) {
-  const { setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
-  const isDark = useCommonStore((state) => state.isDark);
-  const setIsDark = useCommonStore((state) => state.setIsDark);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const accentColor = useCommonStore((state) => state.accentColor);
 
@@ -25,7 +24,6 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
     } else if (!next && accentColor === "rgb(255,255,255)") {
       setAccentColor("rgb(0,0,0)");
     }
-    setIsDark(next);
     setTheme(next ? "dark" : "light");
   };
 

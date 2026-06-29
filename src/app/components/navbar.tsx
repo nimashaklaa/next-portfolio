@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import useCommonStore from "@/app/store/use-common-store";
 
 const NAV_ITEMS = [
@@ -13,7 +14,8 @@ const NAV_ITEMS = [
 
 export default function Navbar() {
   const accentColor = useCommonStore((state) => state.accentColor);
-  const isDark = useCommonStore((state) => state.isDark);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-30 flex h-14 w-full items-center justify-between border-b border-gray-200 bg-white px-6 sm:px-16 dark:border-[#1c1c1c] dark:bg-[#0a0a0a]">
