@@ -72,6 +72,34 @@ export default function About() {
         </div>
       </div>
 
+      {/* Education */}
+      <div className="mt-14">
+        <h2 className="mb-6 text-sm font-semibold tracking-[0.2em] text-zinc-400 uppercase dark:text-zinc-500">
+          Education
+        </h2>
+        <div className="rounded-lg border border-zinc-200 p-5 dark:border-zinc-800">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <h3 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                BSc. in Engineering (Hons), Computer Science and Engineering
+              </h3>
+              <p className="mt-1 text-sm font-medium" style={{ color: accentColor }}>
+                University of Moratuwa, Sri Lanka
+              </p>
+              <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+                Second Class Upper Division
+              </p>
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                Minor degree in Mathematics
+              </p>
+            </div>
+            <span className="shrink-0 font-mono text-xs text-zinc-400 dark:text-zinc-500">
+              2021 – 2025
+            </span>
+          </div>
+        </div>
+      </div>
+
       {/* Contact */}
       <div className="mt-14">
         <h2 className="mb-4 text-sm font-semibold tracking-[0.2em] text-zinc-400 uppercase dark:text-zinc-500">
