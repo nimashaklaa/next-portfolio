@@ -1,38 +1,57 @@
 "use client";
 
+import { useRef } from "react";
 import { useAccentColor } from "@/app/hooks/useAccentColor";
-import useUiStore from "../store/use-ui-store";
+
+const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!?@#$*()[]{}<>+=-_";
+const ORIGINAL = "AMANDI NIMASHA";
 
 export default function HeroHeader() {
   const { accentColor } = useAccentColor();
-  const setDrawerOpen = useUiStore((state) => state.setDrawerOpen);
+  const h2Ref = useRef<HTMLHeadingElement>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const handleMouseEnter = () => {
+    let iteration = 0;
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      if (!h2Ref.current) return;
+      h2Ref.current.textContent = ORIGINAL.split("")
+        .map((char, index) => {
+          if (char === " ") return " ";
+          if (index < iteration) return ORIGINAL[index];
+          return CHARS[Math.floor(Math.random() * CHARS.length)];
+        })
+        .join("");
+
+      if (iteration >= ORIGINAL.length) {
+        clearInterval(intervalRef.current!);
+        if (h2Ref.current) h2Ref.current.textContent = ORIGINAL;
+      }
+      iteration += 1 / 3;
+    }, 30);
+  };
+
+  const handleMouseLeave = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (h2Ref.current) h2Ref.current.textContent = ORIGINAL;
+  };
 
   return (
     <div className="flex w-full flex-col items-center gap-1 text-center">
       <p className="text-xs font-medium tracking-[0.3em] text-zinc-400 uppercase dark:text-zinc-500">
         Hello, I&apos;m
       </p>
-      <div className="group relative flex items-center gap-2">
-        <h2
-          className="text-4xl font-bold tracking-widest uppercase sm:text-5xl"
-          style={{ color: accentColor }}
-        >
-          Amandi Nimasha
-        </h2>
-        <button
-          onClick={() => setDrawerOpen(true)}
-          className="flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 opacity-0 transition-opacity duration-200 group-hover:opacity-100 hover:text-zinc-700 dark:hover:text-zinc-200"
-          aria-label="Customize theme color"
-        >
-          <img
-            src="/settings.svg"
-            alt=""
-            width={14}
-            height={14}
-            className="opacity-50 dark:invert"
-          />
-        </button>
-      </div>
+      <h2
+        ref={h2Ref}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className="cursor-default text-4xl font-bold tracking-widest uppercase select-none sm:text-5xl"
+        style={{ color: accentColor }}
+      >
+        {ORIGINAL}
+      </h2>
     </div>
   );
 }
