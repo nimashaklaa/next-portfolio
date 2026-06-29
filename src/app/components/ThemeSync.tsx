@@ -6,6 +6,7 @@ import useCommonStore from "@/app/store/use-common-store";
 
 export default function ThemeSync() {
   const { resolvedTheme } = useTheme();
+  console.log("resolvedTheme: ", resolvedTheme);
   const setIsDark = useCommonStore((state) => state.setIsDark);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const accentColor = useCommonStore((state) => state.accentColor);

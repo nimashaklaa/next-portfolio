@@ -1,29 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
 import { COLORS } from "@/app/constants/colors";
 import { drawerTokens } from "@/app/constants/theme-tokens";
 import useCommonStore from "@/app/store/use-common-store";
 import ThemeToggle from "@/app/components/ThemeToggle";
-import { useTheme } from "next-themes";
 
 export default function ColourPallet() {
-  const { setTheme } = useTheme();
-
   const drawerOpen = useCommonStore((state) => state.isDrawerOpen);
   const accentColor = useCommonStore((state) => state.accentColor);
   const isDark = useCommonStore((state) => state.isDark);
   const setDrawerOpen = useCommonStore((state) => state.setDrawerOpen);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
-  const setIsDark = useCommonStore((state) => state.setIsDark);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;
-
-  useEffect(() => {
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setIsDark(dark);
-    setAccentColor(dark ? "rgb(255,255,255)" : "rgb(0,0,0)");
-    setTheme(dark ? "dark" : "light");
-  }, []);
 
   return (
     <>
