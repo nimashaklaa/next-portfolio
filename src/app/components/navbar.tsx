@@ -5,8 +5,8 @@ import useUiStore from "@/app/store/use-ui-store";
 
 const NAV_ITEMS = [
   { label: "About Me", href: "/about" },
-  { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/experience" },
+  { label: "Projects", href: "/projects" },
   { label: "Certifications", href: "/certifications" },
   { label: "Publications", href: "/publications" },
   { label: "Blogs", href: "/blogs" },
