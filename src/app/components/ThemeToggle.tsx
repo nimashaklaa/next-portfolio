@@ -2,15 +2,15 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import useCommonStore from "@/app/store/use-common-store";
 import { useTheme } from "next-themes";
+import { usePreferenceStore } from "../store/use-preference-store";
 
 export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
-  const setAccentColor = useCommonStore((state) => state.setAccentColor);
-  const accentColor = useCommonStore((state) => state.accentColor);
+  const setAccentColor = usePreferenceStore((state) => state.setAccentColor);
+  const accentColor = usePreferenceStore((state) => state.accentColor);
 
   const thumbRef = useRef<HTMLDivElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);

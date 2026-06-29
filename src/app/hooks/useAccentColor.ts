@@ -1,6 +1,7 @@
 "use client";
 
-import useCommonStore from "@/app/store/use-common-store";
+import { useTheme } from "next-themes";
+import { usePreferenceStore } from "../store/use-preference-store";
 
 function getLuminance(color: string): number {
   const match = color.match(/rgb\((\d+),(\d+),(\d+)\)/);
@@ -17,8 +18,9 @@ export function getTextColor(bgColor: string): string {
 }
 
 export function useAccentColor() {
-  const accentColor = useCommonStore((state) => state.accentColor);
-  const isDark = useCommonStore((state) => state.isDark);
+  const accentColor = usePreferenceStore((state) => state.accentColor);
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
 
   const isTooDark = isDark && getLuminance(accentColor) < 0.05;
   const textOnAccent = getTextColor(accentColor);

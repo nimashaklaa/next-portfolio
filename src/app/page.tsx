@@ -1,5 +1,6 @@
 "use client";
 
+import { useTheme } from "next-themes";
 import HeroHeader from "@/app/components/HeroHeader";
 import HeroBio from "@/app/components/HeroBio";
 import HeroActions from "@/app/components/HeroActions";
@@ -7,8 +8,16 @@ import ColourPallet from "./components/ColourPallet";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/Footer";
 import BackgroundCharm from "@/app/components/BackgroundCharm";
+import useUiStore from "@/app/store/use-ui-store";
 
 export default function Home() {
+  const { resolvedTheme } = useTheme();
+  const hydrated = useUiStore((state) => state.hydrated);
+
+  if (!resolvedTheme || !hydrated) {
+    return <div className="flex flex-1 items-center justify-center bg-white dark:bg-black" />;
+  }
+
   return (
     <div className="relative flex flex-1 flex-col items-center justify-center bg-white pt-14 font-sans dark:bg-black">
       <BackgroundCharm />

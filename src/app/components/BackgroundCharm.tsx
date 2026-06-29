@@ -1,9 +1,9 @@
 "use client";
 
-import useCommonStore from "@/app/store/use-common-store";
+import { usePreferenceStore } from "../store/use-preference-store";
 
 export default function BackgroundCharm() {
-  const accentColor = useCommonStore((state) => state.accentColor);
+  const accentColor = usePreferenceStore((state) => state.accentColor);
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">

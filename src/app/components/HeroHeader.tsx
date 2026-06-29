@@ -1,21 +1,24 @@
 "use client";
+
 import Image from "next/image";
-import useCommonStore from "@/app/store/use-common-store";
+import useUiStore from "../store/use-ui-store";
 
 export default function HeroHeader() {
-  const setDrawerOpen = useCommonStore((state) => state.setDrawerOpen);
+  const setDrawerOpen = useUiStore((state) => state.setDrawerOpen);
 
   return (
     <div className="flex w-full items-center justify-center gap-3">
-      <Image
-        className="w-full max-w-[260px] sm:max-w-[320px] dark:invert"
-        style={{ height: "auto" }}
-        src="/name.svg"
-        alt="Amandi Nimasha"
-        width={320}
-        height={40}
-        priority
-      />
+      <div className="w-full max-w-[260px] sm:max-w-[320px]">
+        <Image
+          className="dark:invert"
+          style={{ width: "100%", height: "auto" }}
+          src="/name.svg"
+          alt="Amandi Nimasha"
+          width={320}
+          height={40}
+          priority
+        />
+      </div>
       <div className="group relative">
         <button
           onClick={() => setDrawerOpen(true)}

@@ -1,6 +1,6 @@
 "use client";
 
-import useCommonStore from "@/app/store/use-common-store";
+import { usePreferenceStore } from "../store/use-preference-store";
 
 const NAV_ITEMS = [
   { label: "About Me", href: "#about" },
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
-  const accentColor = useCommonStore((state) => state.accentColor);
+  const accentColor = usePreferenceStore((state) => state.accentColor);
 
   return (
     <nav
