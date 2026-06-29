@@ -42,13 +42,6 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
       ease: "power3.inOut",
     });
 
-    gsap.to(trackRef.current, {
-      backgroundColor: isDark ? "#1a1a2e" : "#fde68a",
-      borderColor: isDark ? "#4A3D99" : "#f59e0b",
-      duration: 0.45,
-      ease: "power2.out",
-    });
-
     // Sun: fade out + rotate when going dark
     gsap.to(sunRef.current, {
       opacity: isDark ? 0 : 1,
@@ -83,11 +76,7 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
         {/* Track */}
         <div
           ref={trackRef}
-          className="relative flex h-9 w-16 items-center rounded-full border"
-          style={{
-            backgroundColor: isDark ? "#1a1a2e" : "#fde68a",
-            borderColor: isDark ? "#4A3D99" : "#f59e0b",
-          }}
+          className="relative flex h-9 w-16 items-center rounded-full border border-[#f59e0b] bg-[#fde68a] dark:border-[#4A3D99] dark:bg-[#1a1a2e]"
         >
           {/* Stars in dark mode */}
           {[
@@ -97,13 +86,12 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
           ].map((s, i) => (
             <div
               key={i}
-              className="absolute rounded-full bg-white transition-opacity duration-300"
+              className="absolute rounded-full bg-white opacity-0 transition-opacity duration-300 dark:opacity-70"
               style={{
                 top: s.top,
                 left: s.left,
                 width: s.size,
                 height: s.size,
-                opacity: isDark ? 0.7 : 0,
               }}
             />
           ))}
@@ -111,11 +99,9 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
           {/* Thumb */}
           <div
             ref={thumbRef}
-            className="absolute flex h-7 w-7 items-center justify-center rounded-full shadow-md"
+            className="absolute flex h-7 w-7 items-center justify-center rounded-full bg-[#ffffff] shadow-md dark:bg-[#312e81]"
             style={{
-              backgroundColor: isDark ? "#312e81" : "#ffffff",
               left: 0,
-              x: isDark ? 36 : 4,
             }}
           >
             {/* Sun icon */}
@@ -130,10 +116,7 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              style={{
-                position: "absolute",
-                opacity: isDark ? 0 : 1,
-              }}
+              className="absolute"
             >
               <circle cx="12" cy="12" r="4" />
               <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
@@ -151,10 +134,7 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
               strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
-              style={{
-                position: "absolute",
-                opacity: isDark ? 1 : 0,
-              }}
+              className="absolute"
             >
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
             </svg>
