@@ -1,36 +1,7 @@
 "use client";
 
 import { useAccentColor } from "@/app/hooks/useAccentColor";
-
-const POSTS = [
-  {
-    title: "Why I Switched from Create React App to Next.js",
-    date: "May 2025",
-    readTime: "5 min read",
-    excerpt:
-      "A practical look at the migration process, the trade-offs involved, and why Next.js App Router changed how I think about web architecture.",
-    href: "#",
-    tags: ["Next.js", "React", "Architecture"],
-  },
-  {
-    title: "Tailwind CSS v4 — What's Actually Different",
-    date: "April 2025",
-    readTime: "4 min read",
-    excerpt:
-      "Tailwind v4 drops the config file and moves everything into CSS. Here's how that plays out in a real project.",
-    href: "#",
-    tags: ["CSS", "Tailwind", "Frontend"],
-  },
-  {
-    title: "Understanding Hydration Mismatches in React",
-    date: "March 2025",
-    readTime: "7 min read",
-    excerpt:
-      "Server-side rendering is powerful but fragile. I explain what causes hydration errors, how to debug them, and patterns to avoid them entirely.",
-    href: "#",
-    tags: ["React", "SSR", "Debugging"],
-  },
-];
+import { POSTS } from "@/app/constants/blogs";
 
 export default function Blogs() {
   const { accentColor } = useAccentColor();

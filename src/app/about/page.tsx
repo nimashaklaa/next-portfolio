@@ -100,6 +100,45 @@ export default function About() {
         </div>
       </div>
 
+      {/* Coding Profile */}
+      <div className="mt-14">
+        <h2 className="mb-4 text-sm font-semibold tracking-[0.2em] text-zinc-400 uppercase dark:text-zinc-500">
+          Coding Profile
+        </h2>
+        <a
+          href="https://www.hackerrank.com/profile/200425K_CSE_20"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between rounded-lg border border-zinc-200 p-5 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600"
+        >
+          <div className="flex items-center gap-4">
+            <div
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-white"
+              style={{ backgroundColor: "#00EA64" }}
+            >
+              HR
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">HackerRank</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                200425K_CSE_20 · Coding practices & problem solving
+              </p>
+            </div>
+          </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            className="h-4 w-4 shrink-0 text-zinc-400"
+          >
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+        </a>
+      </div>
+
       {/* Contact */}
       <div className="mt-14">
         <h2 className="mb-4 text-sm font-semibold tracking-[0.2em] text-zinc-400 uppercase dark:text-zinc-500">
