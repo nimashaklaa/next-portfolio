@@ -18,17 +18,10 @@ export default function ColourPallet() {
   const setIsDark = useCommonStore((state) => state.setIsDark);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;
 
-  // Runs once after hydration — reads persisted values and syncs into store
   useEffect(() => {
-    const storedDark = localStorage.getItem("isDark");
-    const dark =
-      storedDark !== null
-        ? storedDark === "true"
-        : window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const accent =
-      localStorage.getItem("accentColor") ?? (dark ? "rgb(255,255,255)" : "rgb(0,0,0)");
+    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setIsDark(dark);
-    setAccentColor(accent);
+    setAccentColor(dark ? "rgb(255,255,255)" : "rgb(0,0,0)");
     setTheme(dark ? "dark" : "light");
   }, []);
 
