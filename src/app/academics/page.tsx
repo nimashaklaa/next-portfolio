@@ -43,7 +43,7 @@ export default function Academics() {
           <div key={item.degree} className="relative">
             {/* Dot */}
             <span
-              className="absolute top-1.5 -left-[25px] h-3 w-3 rounded-full border-2 border-white dark:border-[#0a0a0a]"
+              className="absolute top-1.5 -left-6.25 h-3 w-3 rounded-full border-2 border-white dark:border-[#0a0a0a]"
               style={{ backgroundColor: accentColor }}
             />
             <p className="mb-1 font-mono text-xs text-zinc-400 dark:text-zinc-500">{item.period}</p>

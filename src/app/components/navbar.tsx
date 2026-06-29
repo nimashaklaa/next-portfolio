@@ -15,6 +15,7 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const accentColor = usePreferenceStore((state) => state.accentColor);
   const setDrawerOpen = useUiStore((state) => state.setDrawerOpen);
+  const setLogoHovered = useUiStore((state) => state.setLogoHovered);
 
   return (
     <nav
@@ -26,6 +27,8 @@ export default function Navbar() {
         href="/"
         className="text-sm font-bold tracking-widest"
         style={{ color: accentColor, fontFamily: "var(--font-geist-mono)" }}
+        onMouseEnter={() => setLogoHovered(true)}
+        onMouseLeave={() => setLogoHovered(false)}
       >
         AN
       </a>
