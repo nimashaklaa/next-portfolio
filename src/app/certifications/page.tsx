@@ -1,39 +1,13 @@
 "use client";
 
 import { useAccentColor } from "@/app/hooks/useAccentColor";
-
-const CERTIFICATIONS = [
-  {
-    title: "AWS Certified Developer – Associate",
-    issuer: "Amazon Web Services",
-    date: "2024",
-    credential: "#",
-  },
-  {
-    title: "Meta Front-End Developer Professional Certificate",
-    issuer: "Meta / Coursera",
-    date: "2023",
-    credential: "#",
-  },
-  {
-    title: "Google Data Analytics Certificate",
-    issuer: "Google / Coursera",
-    date: "2023",
-    credential: "#",
-  },
-  {
-    title: "Docker Certified Associate",
-    issuer: "Docker Inc.",
-    date: "2022",
-    credential: "#",
-  },
-];
+import { CERTIFICATIONS } from "@/app/constants/certifications";
 
 export default function Certifications() {
   const { accentColor } = useAccentColor();
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16 sm:px-16 sm:py-24">
+    <div className="mx-auto w-full max-w-5xl px-6 py-16 sm:px-16 sm:py-24">
       {/* Page heading */}
       <div className="mb-12">
         <p className="mb-1 text-xs font-medium tracking-[0.3em] text-zinc-400 uppercase dark:text-zinc-500">
