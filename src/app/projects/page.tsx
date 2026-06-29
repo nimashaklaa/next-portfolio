@@ -1,15 +1,38 @@
 "use client";
 
+import { useState } from "react";
 import { useAccentColor } from "@/app/hooks/useAccentColor";
 import { PROJECTS } from "@/app/constants/projects";
+import { GitHubIcon } from "@/app/components/Icons";
+
+const LiveIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={2}
+    className="h-3.5 w-3.5"
+  >
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+    <polyline points="15 3 21 3 21 9" />
+    <line x1="10" y1="14" x2="21" y2="3" />
+  </svg>
+);
+
+// Collect all unique categories
+const ALL_CATEGORIES = ["All", ...Array.from(new Set(PROJECTS.flatMap((p) => p.category)))];
 
 export default function Projects() {
   const { accentColor } = useAccentColor();
+  const [activeFilter, setActiveFilter] = useState("All");
+
+  const filtered =
+    activeFilter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category.includes(activeFilter));
 
   return (
-    <div className="mx-auto w-full max-w-5xl px-6 py-16 sm:px-16 sm:py-24">
+    <div className="mx-auto w-full max-w-4xl px-6 py-16 sm:px-16 sm:py-24">
       {/* Page heading */}
-      <div className="mb-12">
+      <div className="mb-10">
         <p className="mb-1 text-xs font-medium tracking-[0.3em] text-zinc-400 uppercase dark:text-zinc-500">
           What I&apos;ve built
         </p>
@@ -21,25 +44,108 @@ export default function Projects() {
         </h1>
       </div>
 
-      {/* Project grid */}
-      <div className="grid gap-6 sm:grid-cols-2">
-        {PROJECTS.map((project) => (
-          <a
-            key={project.title}
-            href={project.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col gap-3 rounded-lg border border-zinc-200 p-5 transition-colors hover:border-zinc-400 dark:border-zinc-800 dark:hover:border-zinc-600"
-          >
-            <h2
-              className="text-base font-semibold text-zinc-900 transition-colors group-hover:text-[--accent] dark:text-zinc-100"
-              style={{ "--accent": accentColor } as React.CSSProperties}
+      {/* Category filters */}
+      <div className="mb-10 flex flex-wrap gap-2">
+        {ALL_CATEGORIES.map((cat) => {
+          const isActive = activeFilter === cat;
+          return (
+            <button
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className="rounded-full px-3 py-1 font-mono text-xs transition-all"
+              style={
+                isActive
+                  ? {
+                      backgroundColor: accentColor,
+                      color: "#fff",
+                      border: `1px solid ${accentColor}`,
+                    }
+                  : undefined
+              }
+              {...(!isActive && {
+                className:
+                  "rounded-full px-3 py-1 font-mono text-xs transition-all border border-zinc-200 text-zinc-500 hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500",
+              })}
             >
-              {project.title}
-            </h2>
-            <p className="flex-1 text-sm leading-7 text-zinc-600 dark:text-zinc-400">
-              {project.description}
-            </p>
+              {cat}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Project list */}
+      <div className="flex flex-col gap-5">
+        {filtered.map((project) => (
+          <div
+            key={project.title}
+            className="group rounded-lg border border-zinc-200 p-6 transition-colors hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700"
+          >
+            {/* Top row */}
+            <div className="mb-3 flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-100">
+                  {project.title}
+                </h2>
+                <div className="mt-1 flex flex-wrap gap-1.5">
+                  {project.category.map((cat) => (
+                    <span
+                      key={cat}
+                      className="rounded px-1.5 py-0.5 font-mono text-[10px]"
+                      style={{
+                        color: accentColor,
+                        border: `1px solid ${accentColor}22`,
+                        backgroundColor: `${accentColor}11`,
+                      }}
+                    >
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Links */}
+              <div className="flex items-center gap-3">
+                {project.urls.github && (
+                  <a
+                    href={project.urls.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 font-mono text-xs text-zinc-400 transition-colors hover:text-zinc-700 dark:hover:text-zinc-200"
+                  >
+                    <GitHubIcon /> GitHub
+                  </a>
+                )}
+                {project.urls.live && (
+                  <a
+                    href={project.urls.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 font-mono text-xs transition-colors"
+                    style={{ color: accentColor }}
+                  >
+                    <LiveIcon /> Live
+                  </a>
+                )}
+              </div>
+            </div>
+
+            {/* Description bullets */}
+            <ul className="mb-4 space-y-1.5">
+              {project.description.map((point, i) => (
+                <li
+                  key={i}
+                  className="flex gap-2 text-sm leading-6 text-zinc-600 dark:text-zinc-400"
+                >
+                  <span
+                    className="mt-2 h-1 w-1 shrink-0 rounded-full"
+                    style={{ backgroundColor: accentColor }}
+                  />
+                  {point}
+                </li>
+              ))}
+            </ul>
+
+            {/* Tech tags */}
             <div className="flex flex-wrap gap-2">
               {project.tech.map((t) => (
                 <span
@@ -50,7 +156,7 @@ export default function Projects() {
                 </span>
               ))}
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </div>

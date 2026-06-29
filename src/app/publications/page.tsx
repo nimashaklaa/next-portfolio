@@ -7,43 +7,14 @@ const PUBLICATIONS = [
     title: "ScheduleMe: Multi-Agent Calendar Assistant",
     venue: "39th Pacific Asia Conference on Language, Information and Computation, Dec 2025",
     abstract:
-      "Recent advancements in LLMs have contributed to the rise of advanced conversational assistants that can assist with user needs\n" +
-      "through natural language conversation. This\n" +
-      "paper presents a ScheduleMe, a multi-agent calendar assistant for users to manage google calendar events in natural language. The system\n" +
-      "uses a graph-structured coordination mechanism where a central supervisory agent supervises specialized task agents, allowing modularity, conflicts resolution, and context-aware\n" +
-      "interactions to resolve ambiguities and evaluate\n" +
-      "user commands. This approach sets an example\n" +
-      "of how structured reasoning and agent cooperation might convince operators to increase the\n" +
-      "usability and flexibility of personal calendar\n" +
-      "assistant tools.",
+      "Recent advancements in LLMs have contributed to the rise of advanced conversational assistants that can assist with user needs through natural language conversation. This paper presents a ScheduleMe, a multi-agent calendar assistant for users to manage google calendar events in natural language. The system uses a graph-structured coordination mechanism where a central supervisory agent supervises specialized task agents, allowing modularity, conflicts resolution, and context-aware interactions to resolve ambiguities and evaluate user commands. This approach sets an example of how structured reasoning and agent cooperation might convince operators to increase the usability and flexibility of personal calendar assistant tools.",
     link: "https://aclanthology.org/2025.paclic-1.27/",
   },
   {
     title: "LLM-based Personalized Travel Planner",
     venue: "Accepted Paper at 12th Intelligent Systems Conference 2026",
     abstract:
-      "Effective travel planning requires handling multiple infor-\n" +
-      "mation sources, managing constraints, and tailoring recommendations\n" +
-      "\n" +
-      "to user preferences. While LLMs have introduced dynamic, context-\n" +
-      "aware decision-making, single-agent models often struggle with complex\n" +
-      "\n" +
-      "multi-step reasoning, constraint adherence, and modular execution. To\n" +
-      "\n" +
-      "overcome these limitations, we propose a hierarchical multi-agent frame-\n" +
-      "work where a supervising chatbot agent coordinates specialised agents for\n" +
-      "\n" +
-      "schedule validation, user query formulation, real-time data retrieval, and\n" +
-      "\n" +
-      "constraint-aware itinerary generation. By integrating LLM reasoning, ex-\n" +
-      "ternal APIs, and iterative refinement mechanisms, our approach ensures\n" +
-      "\n" +
-      "adaptability, efficiency, and personalization. Evaluations on real-world\n" +
-      "\n" +
-      "datasets demonstrate superior scalability, modularity, and constraint sat-\n" +
-      "isfaction, positioning our system as a robust solution for AI-driven travel\n" +
-      "\n" +
-      "planning.",
+      "Effective travel planning requires handling multiple information sources, managing constraints, and tailoring recommendations to user preferences. While LLMs have introduced dynamic, context-aware decision-making, single-agent models often struggle with complex multi-step reasoning, constraint adherence, and modular execution. To overcome these limitations, we propose a hierarchical multi-agent framework where a supervising chatbot agent coordinates specialised agents for schedule validation, user query formulation, real-time data retrieval, and constraint-aware itinerary generation. By integrating LLM reasoning, external APIs, and iterative refinement mechanisms, our approach ensures adaptability, efficiency, and personalization. Evaluations on real-world datasets demonstrate superior scalability, modularity, and constraint satisfaction, positioning our system as a robust solution for AI-driven travel planning.",
     link: "/files/LLM_based_Personalized_Travel_Planner.pdf",
   },
 ];
