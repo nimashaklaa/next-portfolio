@@ -5,22 +5,31 @@ import { COLORS } from "@/app/constants/colors";
 import { drawerTokens } from "@/app/constants/theme-tokens";
 import useCommonStore from "@/app/store/use-common-store";
 import ThemeToggle from "@/app/components/ThemeToggle";
+import { useTheme } from "next-themes";
 
 export default function ColourPallet() {
+  const { setTheme } = useTheme();
+
   const drawerOpen = useCommonStore((state) => state.isDrawerOpen);
   const accentColor = useCommonStore((state) => state.accentColor);
   const isDark = useCommonStore((state) => state.isDark);
   const setDrawerOpen = useCommonStore((state) => state.setDrawerOpen);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const setIsDark = useCommonStore((state) => state.setIsDark);
-  const setTheme = useCommonStore((state) => state.setTheme);
   const t = isDark ? drawerTokens.dark : drawerTokens.light;
 
+  // Runs once after hydration — reads persisted values and syncs into store
   useEffect(() => {
-    const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const storedDark = localStorage.getItem("isDark");
+    const dark =
+      storedDark !== null
+        ? storedDark === "true"
+        : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const accent =
+      localStorage.getItem("accentColor") ?? (dark ? "rgb(255,255,255)" : "rgb(0,0,0)");
     setIsDark(dark);
+    setAccentColor(accent);
     setTheme(dark ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", dark);
   }, []);
 
   return (

@@ -3,10 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import useCommonStore from "@/app/store/use-common-store";
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle({ textMuted }: { textMuted: string }) {
+  const { setTheme } = useTheme();
+
   const isDark = useCommonStore((state) => state.isDark);
-  const setTheme = useCommonStore((state) => state.setTheme);
   const setIsDark = useCommonStore((state) => state.setIsDark);
   const setAccentColor = useCommonStore((state) => state.setAccentColor);
   const accentColor = useCommonStore((state) => state.accentColor);
@@ -25,7 +27,6 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
     }
     setIsDark(next);
     setTheme(next ? "dark" : "light");
-    document.documentElement.classList.toggle("dark", next);
   };
 
   useEffect(() => {

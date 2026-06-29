@@ -22,7 +22,6 @@ export function useAccentColor() {
 
   const isTooDark = isDark && getLuminance(accentColor) < 0.05;
   const textOnAccent = getTextColor(accentColor);
-  console.log("text on accent", textOnAccent);
 
   return { accentColor, isTooDark, textOnAccent };
 }
