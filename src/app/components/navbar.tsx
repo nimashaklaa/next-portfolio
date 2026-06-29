@@ -34,7 +34,7 @@ export default function Navbar() {
           <a
             key={item.label}
             href={item.href}
-            className="text-s font-medium tracking-wide text-[#aaa] transition-colors duration-200 hover:text-[var(--accent)] dark:text-[#555] dark:hover:text-[var(--accent)]"
+            className="text-s font-medium tracking-wide text-[#aaa] transition-colors duration-200 hover:text-(--accent) dark:text-[#555] dark:hover:text-(--accent)"
           >
             {item.label}
           </a>

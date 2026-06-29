@@ -74,11 +74,11 @@ export default function ThemeToggle() {
           ref={trackRef}
           className="relative flex h-9 w-16 items-center rounded-full border border-[#f59e0b] bg-[#fde68a] dark:border-[#4A3D99] dark:bg-[#1a1a2e]"
         >
-          {/* Stars in dark mode */}
+          {/* Stars scattered in the left half of the track (behind the thumb when dark) */}
           {[
-            { top: "6px", left: "10px", size: "2px" },
-            { top: "14px", left: "16px", size: "2px" },
-            { top: "8px", left: "22px", size: "1.5px" },
+            { top: "6px", left: "10px", size: "2px" }, // top-left star
+            { top: "14px", left: "16px", size: "2px" }, // bottom-center star
+            { top: "8px", left: "22px", size: "1.5px" }, // top-right star (smaller)
           ].map((s, i) => (
             <div
               key={i}
