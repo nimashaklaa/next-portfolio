@@ -2,6 +2,7 @@
 
 import { useAccentColor } from "@/app/hooks/useAccentColor";
 import { TECH_STACK } from "@/app/constants/techstack";
+import { CONTACTS } from "@/app/constants/contacts";
 
 export default function About() {
   const { accentColor } = useAccentColor();
@@ -77,11 +78,7 @@ export default function About() {
           Let&apos;s Connect
         </h2>
         <div className="flex flex-wrap gap-4">
-          {[
-            { label: "GitHub", href: "https://github.com/nimashaklaa" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/amandi-nimasha-0077a5259/" },
-            { label: "Email", href: "mailto:amandinimasha99.com" },
-          ].map((link) => (
+          {CONTACTS.map((link) => (
             <a
               key={link.label}
               href={link.href}

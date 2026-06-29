@@ -7,6 +7,7 @@ import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/Footer";
 import ColourPallet from "@/app/components/ColourPallet";
 import BackgroundCharm from "@/app/components/BackgroundCharm";
+import FloatingContact from "@/app/components/FloatingContact";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,6 +43,7 @@ export default function RootLayout({
             <main className="flex flex-1 flex-col pt-14">{children}</main>
             <Footer />
             <ColourPallet />
+            <FloatingContact />
           </div>
         </ThemeProvider>
       </body>
