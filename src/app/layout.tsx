@@ -6,6 +6,7 @@ import ThemeSync from "@/app/components/ThemeSync";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/Footer";
 import ColourPallet from "@/app/components/ColourPallet";
+import BackgroundCharm from "@/app/components/BackgroundCharm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +36,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-screen flex-col">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="flex min-h-screen flex-col">
+          <div className="flex min-h-screen flex-col font-mono">
             <ThemeSync />
             <Navbar />
             <main className="flex flex-1 flex-col pt-14">{children}</main>
