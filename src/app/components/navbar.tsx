@@ -15,14 +15,8 @@ export default function Navbar() {
   const accentColor = useCommonStore((state) => state.accentColor);
   const isDark = useCommonStore((state) => state.isDark);
 
-  const borderColor = isDark ? "#1c1c1c" : "#e5e7eb";
-  const bg = isDark ? "#0a0a0a" : "#ffffff";
-
   return (
-    <nav
-      className="fixed top-0 right-0 left-0 z-30 flex h-14 w-full items-center justify-between px-6 sm:px-16"
-      style={{ backgroundColor: bg, borderBottom: `1px solid ${borderColor}` }}
-    >
+    <nav className="fixed top-0 right-0 left-0 z-30 flex h-14 w-full items-center justify-between border-b border-gray-200 bg-white px-6 sm:px-16 dark:border-[#1c1c1c] dark:bg-[#0a0a0a]">
       {/* Logo */}
       <a
         href="#"
@@ -38,8 +32,7 @@ export default function Navbar() {
           <a
             key={item.label}
             href={item.href}
-            className="text-s font-medium tracking-wide transition-colors duration-200"
-            style={{ color: isDark ? "#555" : "#aaa" }}
+            className="text-s font-medium tracking-wide text-[#aaa] transition-colors duration-200 dark:text-[#555]"
             onMouseEnter={(e) => (e.currentTarget.style.color = accentColor)}
             onMouseLeave={(e) => (e.currentTarget.style.color = isDark ? "#555" : "#aaa")}
           >
@@ -50,9 +43,8 @@ export default function Navbar() {
 
       {/* Mobile hamburger */}
       <button
-        className="flex flex-col gap-1.5 md:hidden"
+        className="flex flex-col gap-1.5 text-[#aaa] md:hidden dark:text-[#555]"
         aria-label="Menu"
-        style={{ color: isDark ? "#555" : "#aaa" }}
       >
         <span className="block h-px w-5 bg-current" />
         <span className="block h-px w-5 bg-current" />

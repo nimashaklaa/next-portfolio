@@ -8,7 +8,8 @@ export default function HeroHeader() {
   return (
     <div className="flex w-full items-center justify-center gap-3">
       <Image
-        className="h-auto w-full max-w-[260px] sm:max-w-[320px] dark:invert"
+        className="w-full max-w-[260px] sm:max-w-[320px] dark:invert"
+        style={{ height: "auto" }}
         src="/name.svg"
         alt="Amandi Nimasha"
         width={320}

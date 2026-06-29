@@ -66,8 +66,6 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
     });
   }, [isDark]);
 
-  console.log("accent color", accentColor);
-
   return (
     <div>
       <p
