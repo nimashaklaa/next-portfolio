@@ -5,7 +5,6 @@ import useUiStore from "@/app/store/use-ui-store";
 
 const NAV_ITEMS = [
   { label: "About Me", href: "/about" },
-  { label: "Academics", href: "/academics" },
   { label: "Projects", href: "/projects" },
   { label: "Certifications", href: "/certifications" },
   { label: "Publications", href: "/publications" },

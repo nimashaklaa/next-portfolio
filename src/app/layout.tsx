@@ -8,6 +8,7 @@ import Footer from "@/app/components/Footer";
 import ColourPallet from "@/app/components/ColourPallet";
 import FloatingContact from "@/app/components/FloatingContact";
 import LogoAvatar from "@/app/components/LogoAvatar";
+import BackgroundCharm from "@/app/components/BackgroundCharm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,6 +41,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col font-mono">
             <ThemeSync />
             <Navbar />
+            <BackgroundCharm />
             <main className="flex flex-1 flex-col pt-14">{children}</main>
             <Footer />
             <ColourPallet />
