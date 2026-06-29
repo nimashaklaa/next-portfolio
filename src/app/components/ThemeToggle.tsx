@@ -5,7 +5,7 @@ import gsap from "gsap";
 import useCommonStore from "@/app/store/use-common-store";
 import { useTheme } from "next-themes";
 
-export default function ThemeToggle({ textMuted }: { textMuted: string }) {
+export default function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
@@ -59,16 +59,14 @@ export default function ThemeToggle({ textMuted }: { textMuted: string }) {
 
   return (
     <div>
-      <p
-        className="mb-3 text-[10px] font-semibold tracking-widest uppercase"
-        style={{ color: textMuted }}
-      >
+      <p className="mb-3 text-[10px] font-semibold tracking-widest text-[#9ca3af] uppercase dark:text-[#555555]">
         Theme
       </p>
 
       <button
         onClick={toggle}
         aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        suppressHydrationWarning
         className="focus:outline-none"
       >
         {/* Track */}

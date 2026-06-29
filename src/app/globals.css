@@ -5,6 +5,8 @@
   --background: #ffffff;
   --foreground: #171717;
   --dot-color: #000000;
+  --swatch-border: #111827;
+  --swatch-glow: #6366f1;
 }
 
 @theme inline {
@@ -18,6 +20,8 @@
   --background: #0a0a0a;
   --foreground: #ededed;
   --dot-color: #ffffff;
+  --swatch-border: #ffffff;
+  --swatch-glow: #4a3d99;
 }
 
 body {
