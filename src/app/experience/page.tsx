@@ -21,7 +21,7 @@ export default function Experience() {
       </div>
 
       {/* List */}
-      <div className="boarder-l relative ml-2 space-y-12 border-zinc-200 pl-6 dark:border-zinc-800">
+      <div className="relative ml-2 space-y-12 border-zinc-200 pl-6 dark:border-zinc-800">
         {EXPERIENCES.map((exp, index) => (
           <div key={`${exp.role}-${index}`} className="group relative">
             <div

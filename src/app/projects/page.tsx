@@ -38,7 +38,11 @@ export default function Projects() {
             <button
               key={cat}
               onClick={() => setActiveFilter(cat)}
-              className="rounded-full px-3 py-1 font-mono text-xs transition-all"
+              className={
+                isActive
+                  ? "rounded-full px-3 py-1 font-mono text-xs transition-all"
+                  : "rounded-full border border-zinc-200 px-3 py-1 font-mono text-xs text-zinc-500 transition-all hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500"
+              }
               style={
                 isActive
                   ? {
@@ -48,10 +52,6 @@ export default function Projects() {
                     }
                   : undefined
               }
-              {...(!isActive && {
-                className:
-                  "rounded-full px-3 py-1 font-mono text-xs transition-all border border-zinc-200 text-zinc-500 hover:border-zinc-400 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500",
-              })}
             >
               {cat}
             </button>
